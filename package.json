@@ -1,0 +1,44 @@
+{
+  "name": "starter-pack-alexa-skill",
+  "version": "1.0.0",
+  "description": "This is a Starter Pack with ES6 for skills with Amazon Alexa",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && babel ./lambda/custom/ -d dist && cp lambda/custom/package.json dist/",
+    "start": "nodemon",
+    "deploy": "npm run build && ask deploy",
+    "get:skill": "ask api get-skill --skill-id amzn1.ask.skill.81cb50b7-d353-48f1-a5af-2ae4fba8c37d > skill.json",
+    "get:models": "npm run get:model:en",
+    "get:model:en": "ask api get-model -s amzn1.ask.skill.81cb50b7-d353-48f1-a5af-2ae4fba8c37d -l en-US > models/en-US.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/napolux/alexa-starter-pack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/napolux/alexa-starter-pack/issues"
+  },
+  "homepage": "https://github.com/napolux/alexa-starter-pack#readme",
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1"
+  },
+  "dependencies": {
+    "ask-sdk-core": "^2.3.0",
+    "ask-sdk-model": "^1.11.2",
+    "i18next": "^11.3.6",
+    "i18next-sprintf-postprocessor": "^0.2.2"
+  }
+}
